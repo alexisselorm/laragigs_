@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ListingController;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,5 +15,8 @@ use App\Http\Controllers\ListingController;
  */
 
 Route::get('/', [ListingController::class, 'index']);
+
+Route::post('/listings', [ListingController::class, 'store']);
+Route::get('/listings/create', [ListingController::class, 'create']);
 
 Route::get('/listings/{listing:id}', [ListingController::class, 'show']);
