@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Listing;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -11,8 +12,18 @@ use Illuminate\Support\Facades\Route;
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
-*/
+ */
 
 Route::get('/', function () {
-    return view('welcome');
+
+    return view('listings',[
+        'listings'=>Listing::all()
+    ]);
+});
+
+Route::get('/listings/{listing:id}', function (Listing $listing){
+
+    return view('listing',[
+        'listing' => $listing
+    ]);
 });
