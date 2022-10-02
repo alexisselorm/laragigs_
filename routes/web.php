@@ -27,9 +27,12 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/listings/create', [ListingController::class, 'create']);
 
+    Route::get('/listings/manage', [ListingController::class, 'manage']);
+
     Route::get('/listings/{listing:id}', [ListingController::class, 'show']);
 
-    Route::delete('/listings/{listing:id}', [ListingController::class, 'destroy']);
+    Route::delete('/listings/{listing}', [ListingController::class, 'destroy']);
+
 });
 
 // Users

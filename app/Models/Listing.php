@@ -7,9 +7,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class Listing extends Model
 {
+    use HasFactory;
+
     protected $guarded = ['id'];
 
-    
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
     public function scopeFilter($query, array $filters)
     {
         if ($filters['tag'] ?? false) {
@@ -23,5 +29,5 @@ class Listing extends Model
                 ->orWhere('tags', 'like', '%' . request('search') . '%');
         }
     }
-    use HasFactory;
+
 }
